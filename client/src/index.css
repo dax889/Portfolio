@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-gray-950 text-white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 35s linear infinite;
+}
+.animate-container:hover .animate-scroll {
+  animation-play-state: paused;
+}
