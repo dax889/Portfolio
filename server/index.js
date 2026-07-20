@@ -2,16 +2,17 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Project = require("./models/Project");
-
+require("dotenv").config();
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/daxPortfolio")
+  .connect(process.env.MONGODB_URI)
   .then(async () => {
     console.log("MongoDB Connected ✅");
+
 
     const count = await Project.countDocuments();
 
