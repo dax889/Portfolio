@@ -10,9 +10,13 @@ app.use(express.json());
 
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(async () => {
-    console.log("MongoDB Connected ✅");
-
+  .then(() => {
+    console.log("✅ MongoDB Connected");
+  })
+  .catch((err) => {
+    console.error("MongoDB Connection Error:");
+    console.error(err);
+  });
 
     const count = await Project.countDocuments();
 
