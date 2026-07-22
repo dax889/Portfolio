@@ -2,13 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Project = require("./models/Project");
-require("dotenv").config();
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
- .connect(process.env.MONGODB_URI)
+mongoose
+  .connect("mongodb://127.0.0.1:27017/daxPortfolio")
   .then(async () => {
     console.log("MongoDB Connected ✅");
 
@@ -23,7 +24,7 @@ app.use(express.json());
           description:
             "WhatsApp-style chat with RSA encryption & AJAX polling.",
           tech: ["Django", "JavaScript", "RSA Encryption"],
-          image: "/images/chat website.jpg",
+          image: "http://localhost:5000/images/chat website.jpg",
           github: "https://github.com/dax889/ChatWebsite.git",
           demo: "#",
         },
@@ -31,7 +32,7 @@ app.use(express.json());
           title: "Yoga Blog Platform",
           description: "Full stack blog with JWT authentication and MongoDB.",
           tech: ["React", "NodeJS", "MongoDB"],
-          image: "/images/Yoga Blog image.png",
+          image: "http://localhost:5000/images/Yoga Blog image.png",
           github: "https://github.com/dax889/Yoga-Blog-Post-Website.git",
           demo: "#",
         },
@@ -40,7 +41,7 @@ app.use(express.json());
           description:
             "Complete gym ERP system for member registration, trainer management, attendance tracking, fee management, and admin dashboard.",
           tech: ["React", "NodeJS", "MongoDB", "Express"],
-          image: "/images/Gym3.jpg",
+          image: "http://localhost:5000/images/Gym3.jpg",
           github: "https://github.com/",
           demo: "#",
         },
@@ -49,7 +50,7 @@ app.use(express.json());
           description:
             "Dynamic news publishing platform with category filtering, admin content management, authentication system, and responsive UI.",
           tech: ["React", "NodeJS", "MongoDB"],
-          image: "/images/News image.png",
+          image: "http://localhost:5000/images/News image.png",
           github: "https://github.com/",
           demo: "#",
         },
@@ -58,7 +59,7 @@ app.use(express.json());
           description:
             "Corporate IT website showcasing hardware & software components with dynamic product listings, admin panel, and SEO-friendly structure.",
           tech: ["React", "NodeJS", "MongoDB", "Express"],
-          image: "/images/Cryonix-IT image2.png",
+          image: "http://localhost:5000/images/Cryonix-IT image2.png",
           github: "https://github.com/",
           demo: "#",
         },
@@ -67,7 +68,7 @@ app.use(express.json());
           description:
             "Online ice cream ordering system with product catalog, cart functionality, order management, and payment integration ready structure.",
           tech: ["Django", "Python", "SQLite"],
-          image: "/images/icecream.png",
+          image: "http://localhost:5000/images/icecream.png",
           github: "https://github.com/",
           demo: "#",
         },
@@ -85,8 +86,4 @@ app.get("/api/projects", async (req, res) => {
   res.json(projects);
 });
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+app.listen(5000, () => console.log("Server running on port 5000"));
