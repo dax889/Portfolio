@@ -8,15 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("✅ MongoDB Connected");
-  })
-  .catch((err) => {
-    console.error("MongoDB Connection Error:");
-    console.error(err);
-  });
+ .connect(process.env.MONGODB_URI)
+  .then(async () => {
+    console.log("MongoDB Connected ✅");
 
     const count = await Project.countDocuments();
 
@@ -64,7 +58,7 @@ mongoose
           description:
             "Corporate IT website showcasing hardware & software components with dynamic product listings, admin panel, and SEO-friendly structure.",
           tech: ["React", "NodeJS", "MongoDB", "Express"],
-          image: "h/images/Cryonix-IT image2.png",
+          image: "/images/Cryonix-IT image2.png",
           github: "https://github.com/",
           demo: "#",
         },
