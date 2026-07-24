@@ -8,7 +8,7 @@ export default function Projects() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/projects")
+      .get("https://portfolio-phvn.onrender.com/api/projects")
       .then((res) => setProjects(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -26,9 +26,7 @@ export default function Projects() {
   if (projects.length === 0) {
     return (
       <section className="py-20 text-center">
-        <h3 className="text-xl text-gray-400">
-          Projects Coming Soon 🚀
-        </h3>
+        <h3 className="text-xl text-gray-400">Projects Coming Soon 🚀</h3>
       </section>
     );
   }
@@ -36,9 +34,7 @@ export default function Projects() {
   // ✅ Normal render
   return (
     <section id="projects" className="py-20 max-w-6xl mx-auto px-4">
-      <h2 className="text-3xl font-bold text-blue-400 mb-10">
-        Projects
-      </h2>
+      <h2 className="text-3xl font-bold text-blue-400 mb-10">Projects</h2>
 
       <div className="grid md:grid-cols-2 gap-8 ">
         {projects.map((project, i) => (
@@ -50,7 +46,7 @@ export default function Projects() {
             className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-102"
           >
             <img
-              src={project.image}
+              src={`https://portfolio-phvn.onrender.com${project.image}`}
               alt={project.title}
               className="w-full h-62 object-cover"
             />
@@ -60,9 +56,7 @@ export default function Projects() {
                 {project.title}
               </h3>
 
-              <p className="text-gray-400 mb-4">
-                {project.description}
-              </p>
+              <p className="text-gray-400 mb-4">{project.description}</p>
 
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech, index) => (
